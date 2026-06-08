@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>js script</h2>
+    <script>
+      let name = "harini";
+      document.write("Name:" + name + "<br>");
+    </script>
+
+    <h2>length</h2>
+    <script>
+      let str = "hello";
+      document.write("Length:" + str.length + "<br>");
+    </script>
+
+    <h2>slice(start,end)</h2>
+
+    <script>
+      let fruits = ["Apple", "Orange", "Mango", "Grapes"];
+
+      let result = fruits.slice(0, 3);
+
+      document.write(result);
+    </script>
+
+    <h2>substring (start,end)</h2>
+    <script>
+      let text = "Harini";
+      document.write("substring: " + text.substring(2, 5) + "<br>");
+    </script>
+
+    <h2>JS Object</h2>
+    <p id="demo"></p>
+    <script>
+      let student = {
+        name: "Ini",
+        age: 19,
+        course: "BCA",
+      };
+      document.getElementById("demo").innerHTML =
+        student.name + "<br>" + student.age + "<br>" + student.course;
+    </script>
+
+    <h2>setTimeout see above</h2>
+    <script>
+      setTimeout(function () {
+        alert("Hello after 3 seconds");
+      }, 3000);
+    </script>
+
+    <h2>clearTimeout()</h2>
+    <script>
+      let timer = setTimeout(function () {
+        alert("Hello");
+      }, 5000);
+    </script>
+
+    <h2>try and catch</h2>
+    <script>
+      try {
+        console.log(a);
+      } catch (error) {
+        document.write("error found");
+      }
+    </script>
+
+    <h2>throw</h2>
+    <script>
+      try {
+        throw "Login failed";
+      } catch (error) {
+        document.write(error);
+      }
+    </script>
+
+    <h2>finally block with error</h2>
+    <script>
+      try {
+        throw "Login Error";
+      } catch (error) {
+        document.write(error + "<br>");
+      } finally {
+        document.write("Finally block always runs");
+      }
+    </script>
+
+    <h2>finally block without error</h2>
+    <script>
+      try {
+        document.write("Hello +<br>");
+      } catch (error) {
+        document.write("error");
+      } finally {
+        document.write("program finished");
+      }
+    </script>
+
+    <h2>try catch finally ex</h2>
+    <script>
+      try {
+        document.write("Try block started <br>");
+        let age = -5;
+        if (age < 0) {
+          throw "Age cannot be negative";
+        }
+
+        document.write("Age is: " + age);
+      } catch (error) {
+        document.write("catch block:" + error + "<br>");
+      } finally {
+        document.write("Finally block always runs");
+      }
+    </script>
+  </body>
+</html>

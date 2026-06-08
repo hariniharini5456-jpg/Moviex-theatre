@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>on click</h2>
+    <button onclick="showMessage()">click me</button><br /><br />
+    <script>
+      function showMessage() {
+        alert("button clicked!");
+      }
+    </script>
+
+    <h2>on change</h2>
+    <select id="myselect" onchange="myFunction()">
+      <option>---select---</option>
+      <option value="wb">wb</option>
+      <option value="ocd">ocd</option>
+      <option value="designer">designer</option>
+    </select>
+    <p id="demo"></p>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myselect").value;
+        document.getElementById("demo").innerHTML = "you selected: " + x;
+      }
+    </script>
+
+    <h2>onsubmit</h2>
+    <form onsubmit="showMessage()">
+      <input type="text" />
+      <input type="submit" value="submit" />
+    </form>
+    <script>
+      function showMessage() {
+        alert("verified!");
+      }
+    </script>
+
+    <h2>onmouseover</h2>
+    <h2 id="key" onmouseover="over()" onmouseout="out()">come & touch meee</h2>
+    <br /><br />
+    <script type="text/javascript">
+      function over() {
+        document.getElementById("key").innerHTML = "yes i open";
+      }
+      function out() {
+        document.getElementById("key").innerHTML = "hurray!";
+      }
+    </script>
+
+    <h3>I&O statement</h3>
+    <script>
+      person = prompt("enter ur name");
+      document.write("Welcome " + person);
+      confirm("Web developer only");
+      document.write("  to Techvolt ");
+      window.alert("fill all the requirements");
+    </script>
+
+    <script>
+      var x = 5;
+      var y = 10;
+      var z = x + y;
+      document.write("<h1>var variable</h1>");
+      document.write("x=" + x + "<br>");
+      document.write("y=" + y + "<br>");
+      document.write("<h4>total</h4>");
+      document.write("z=" + z + "<br><br><br>");
+
+      let a = 5;
+      let b = 20;
+      let c = a + b;
+      document.write("<h1>let variable</h1>");
+      document.write("a=" + a + "<br>");
+      document.write("b=" + b + "<br>");
+      document.write("<h4>total</h4>");
+      document.write("c=" + c + "<br><br><br>");
+
+      const p = 50;
+      const q = 10;
+      const r = p + q;
+      document.write("<h1>const variable</h1>");
+      document.write("p=" + p + "<br>");
+      document.write("q=" + q + "<br>");
+      document.write("<h4>total</h4>");
+      document.write("r=" + r + "<br><br><br>");
+    </script>
+
+    Arithmetic operators
+    <script>
+      a = 16;
+      b = 25;
+      document.write("<h2>Arithmetic operator</h2>");
+      document.write("Addition = " + (a + b) + "<br>");
+      document.write("Subtraction = " + (a - b) + "<br>");
+      document.write("Division = " + a / b + "<br>");
+      document.write("Multiplication = " + a * b + "<br>");
+      document.write("Modulus = " + (a % b) + "<br>");
+      document.write("Exponencial = " + a ** b + "<br>");
+      document.write("Increment = " + ++b + "<br>");
+      document.write("Decrement = " + --a + "<br>");
+    </script>
+
+    Assignment operators
+    <script>
+      a = 20;
+
+      document.write("<h2>Assignment Operators</h2>");
+
+      document.write("Initial value = " + a + "<br><br>");
+      a += 5;
+      document.write("Addition Assignment (+=) = " + a + "<br>");
+      a -= 3;
+      document.write("Subtraction Assignment (-=) = " + a + "<br>");
+      a *= 2;
+      document.write("Multiplication Assignment (*=) = " + a + "<br>");
+      a /= 4;
+      document.write("Division Assignment (/=) = " + a + "<br>");
+      a %= 3;
+      document.write("Modulus Assignment (%=) = " + a + "<br>");
+    </script>
+
+    Comparison operators
+    <script>
+      a = 20;
+      b = 10;
+
+      document.write("<h2>Comparison Operators</h2>");
+
+      document.write("a == b : " + (a == b) + "<br>");
+      document.write("a != b : " + (a != b) + "<br>");
+      document.write("a > b : " + (a > b) + "<br>");
+      document.write("a < b : " + (a < b) + "<br>");
+      document.write("a >= b : " + (a >= b) + "<br>");
+      document.write("a <= b : " + (a <= b) + "<br>");
+    </script>
+
+    Logical operators
+    <script>
+      x = true;
+      y = false;
+
+      document.write("<h2>Logical Operators</h2>");
+      document.write("x && y : " + (x && y) + "<br>");
+      document.write("x || y : " + (x || y) + "<br>");
+      document.write("!x : " + !x + "<br>");
+    </script>
+
+    <h2>if statement</h2>
+    <script>
+      age = 20;
+
+      if (age >= 18) {
+        document.write(" major <br><br>");
+      }
+    </script>
+
+    <h2>else statement</h2>
+
+    <script>
+      let time = 12;
+      if (time <= 10) {
+        document.write("Good morning");
+      } else {
+        document.write("Good afternoon");
+      }
+    </script>
+
+    <h2>if else statement</h2>
+    <script>
+      age = 15;
+
+      if (age >= 18) {
+        document.write("Eligible to vote");
+      } else {
+        document.write("Not eligible to vote <br><br>");
+      }
+    </script>
+
+    <h2>switch statement</h2>
+    <script>
+      day = 3;
+
+      switch (day) {
+        case 1:
+          document.write("Sunday");
+          break;
+
+        case 2:
+          document.write("Monday");
+          break;
+
+        case 3:
+          document.write("Tuesday");
+          break;
+
+        case 4:
+          document.write("Wednesday");
+          break;
+
+        default:
+          document.write("Invalid Day <br><br>");
+      }
+    </script>
+
+    <h2>FOR LOOP</h2>
+    <p id="exfor"></p>
+    <script>
+      let text = "";
+      for (let i = 0; i < 5; i++) {
+        text += "The number is" + i + "<br>";
+      }
+      document.getElementById("exfor").innerHTML = text;
+    </script>
+
+    <h2>FOR in LOOP</h2>
+    <p id="exforin"></p>
+    <script>
+      const person = { fname: "harini", iname: "cena", age: "89" };
+      let Txt = "";
+      for (let x in person) {
+        Txt += person[x] + "<br>";
+      }
+      document.getElementById("exforin").innerHTML = Txt;
+    </script>
+
+    <h2>For OF Loop</h2>
+    <p id="exforof"></p>
+    <script>
+      const fruits = ["Apple", "banana", "cherry"];
+      let text2 = "";
+      for (let x of fruits) {
+        text2 += x + "<br>";
+      }
+      document.getElementById("exforof").innerHTML = text2;
+    </script>
+
+    <h2>WHILE LOOP</h2>
+    <p id="exwhile"></p>
+    <script>
+      let text3 = "";
+      let i = 0;
+
+      while (i < 5) {
+        text3 += "The number is " + i + "<br>";
+        i++;
+      }
+      document.getElementById("exwhile").innerHTML = text3;
+    </script>
+
+    <h2>DO WHILE LOOP</h2>
+    <p id="exdowhile"></p>
+    <script>
+      let text4 = "";
+      let j = 0;
+      do {
+        text4 += "The number is " + i + "<br>";
+        j++;
+      } while (j < 5);
+      document.getElementById("exdowhile").innerHTML = text4;
+    </script>
+
+    <h2>set interval</h2>
+    <p id="demo"></p>
+    <script>
+      let count = 0;
+      setInterval(function () {
+        count++;
+        document.getElementById("demo").innerHTML = count;
+      }, 1000);
+    </script>
+  </body>
+</html>
