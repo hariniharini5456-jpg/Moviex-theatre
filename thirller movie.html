@@ -1,0 +1,3338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+  
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+
+          body {
+            background: black;
+            overflow-x: hidden;
+          }
+
+        
+          .navbar {
+            background: #000;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+        
+          .navbar-brand {
+            font-size: 52px;
+            font-weight: 900;
+            color: white !important;
+            letter-spacing: 1px;
+          }
+
+          .navbar-brand span {
+            color: #ff1e1e;
+          }
+
+        
+          .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 18px;
+            position: relative;
+            transition: 0.3s;
+          }
+
+          .navbar-nav .nav-link.active {
+            color: #ff1e1e !important;
+          }
+
+    
+          .navbar-nav .nav-link.active::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #ff1e1e;
+            left: 0;
+            bottom: -12px;
+            border-radius: 10px;
+          }
+
+          .navbar-nav .nav-link:hover {
+            color: #ff1e1e !important;
+          }
+
+          .icon-box{
+           display: flex;
+           align-items: center;
+           gap:35px;
+          }
+        
+          .fa-magnifying-glass,
+          .fa-cart-shopping{
+
+             color:white;
+             font-size:30px;
+             cursor:pointer;
+             transition:0.3s;
+            }
+
+
+       .fa-magnifying-glass:hover,
+       .fa-cart-shopping:hover{
+
+        color:red;
+         }
+
+
+.cart-box{
+    position:relative;
+}
+
+
+
+.login-btn{
+
+    background:red;
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    font-size:18px;
+    font-weight:bold;
+
+    border-radius:8px;
+
+    transition:0.3s;
+}
+
+.login-btn:hover{
+
+    background:white;
+    color:red;
+}
+
+.hero-section{
+    position:relative;
+    width:100%;
+    height:500px;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.hero-poster{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.2)
+    );
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:60px;
+    transform:translateY(-50%);
+    z-index:2;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:50px;
+    font-weight:700;
+    margin:10px 0;
+    color: #ff1e1e;
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:500px;
+}
+
+.watch-btn{
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    max-width: 300px;
+}
+
+.watch-btn:hover{
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+
+.trailer-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    z-index:9999;
+}
+
+.trailer-box{
+    width:80%;
+    margin:50px auto;
+}
+
+.trailer-box video{
+    width:100%;
+    border-radius:10px;
+}
+
+.close-btn{
+    color:white;
+    font-size:40px;
+    float:right;
+    cursor:pointer;
+}
+.movie-meta{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.rating{
+    color:#ff3131;
+    font-weight:700;
+}
+
+.movie-desc{
+    font-size:24px;
+    color:#d0d0d0;
+    line-height:1.0;
+    margin-bottom:35px;
+}
+
+.featured-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.book-btn{
+    background:#ff3131;
+    color:white;
+    border:none;
+    padding:16px 35px;
+    border-radius:12px;
+    font-size:20px;
+    font-weight:700;
+}
+
+.trailer-btn{
+    background:transparent;
+    color:white;
+    border:none;
+    font-size:22px;
+}
+.movie-card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+    height:100%;
+}
+
+.movie-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(255,0,0,.25);
+}
+
+.movie-img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.movie-content{
+    padding:15px;
+    color:white;
+}
+
+.movie-content h5{
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.movie-content p{
+    color:#bdbdbd;
+    font-size:14px;
+    margin-bottom:10px;
+}
+.footer{
+
+    background: black;
+
+    padding: 60px 8%;
+
+    margin-top: 80px;
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+}
+
+.footer-container{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 40px;
+
+}
+
+.footer-box{
+
+    width: 220px;
+
+}
+.footer span {
+            color: #ff1e1e;
+          }
+
+.footer-box h2{
+
+    color: white;
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+
+}
+
+.footer-box h3{
+
+    color: white;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+
+}
+
+.footer-box p{
+
+    color: rgb(243, 190, 190);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 10px;
+
+}
+
+.footer-box a{
+
+    display: block;
+
+    color: rgb(218, 214, 214);
+
+    text-decoration: none;
+
+    margin-bottom: 12px;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+
+}
+
+.footer-box a:hover{
+
+    color: rgb(200, 175, 200);
+
+    transform: translateX(5px);
+
+}
+
+.footer-box input{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    margin-top: 10px;
+
+}
+
+.footer h4{
+  color: aliceblue;
+ 
+  font-size: medium;
+}
+    
+.movie-modal{
+    color:white;
+    max-width:1000px;
+    margin:40px auto;
+    padding:30px;
+
+    background:rgba(20,20,20,0.85);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 25px rgba(255,94,87,0.25),
+    0 0 50px rgba(0,0,0,0.5);
+
+    backdrop-filter:blur(10px);
+
+    transition:0.4s ease;
+}
+
+.movihover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 35px rgba(255,94,87,0.4),
+    0 0 70px rgba(255,94,87,0.15);
+}
+
+
+.movie-poster{
+    width:100%;
+    height:600px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.movie-title{
+    font-size:50px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.rating-box{
+    font-size:28px;
+    color:#ffd700;
+    margin-bottom: 25px;
+}
+
+.review{
+    color:#aaa;
+    margin-left:15px;
+}
+
+.info-row{
+    display:flex;
+    gap:15px;
+    margin-bottom: 10px;
+}
+
+.info-row i{
+    color:#ef4444;
+    font-size:35px;
+    margin-top:5px;
+}
+
+.info-row h5{
+    font-size:28px;
+}
+
+.info-row p{
+    font-size:22px;
+    color:#bdbdbd;
+}
+
+.premium-book-btn{
+    background:#e50914;
+    color:white;
+    border:none;
+    padding:16px 30px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    max-width: 300px;
+    margin-left: 30px;
+}
+
+.premium-book-btn:hover{
+    background:#ff1f2f;
+    box-shadow:0 0 20px rgba(229,9,20,.8);
+}
+
+.select-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:10px;
+    background:#ef4444;
+    color:white;
+    font-size:24px;
+    font-weight:700;
+    margin-top:20px;
+}
+
+.select-btn:hover{
+    background:#dc2626;
+}
+
+hr{
+    border-color:rgba(255,255,255,.15);
+}
+.movie-body{
+    max-height: 80vh;
+    overflow: hidden;
+    padding: 20px !important;
+}
+
+
+.login-box{
+    background:#111827;
+    border-radius:25px;
+    padding:40px;
+    border:1px solid #2b2b2b;
+}
+
+.login-title{
+    text-align:center;
+    color:white;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.input-box{
+    position:relative;
+    margin-bottom:20px;
+}
+
+.input-box input{
+    width:100%;
+    height:65px;
+    background:transparent;
+    border:2px solid #3a3a3a;
+    border-radius:15px;
+    padding-left:60px;
+    padding-right:60px;
+    color:white;
+    font-size:18px;
+}
+
+.input-box i{
+    position:absolute;
+    top:22px;
+    color:#bdbdbd;
+    font-size:20px;
+}
+
+.input-box .fa-user,
+.input-box .fa-lock{
+    left:22px;
+}
+
+.eye-icon{
+    right:22px;
+    cursor:pointer;
+}
+
+.forgot{
+    text-align:right;
+    margin-bottom:25px;
+}
+
+.forgot a{
+    color:#d1d5db;
+    text-decoration:none;
+}
+
+.login-btn{
+    width:100%;
+    height:65px;
+    background:#ef1c25;
+    border:none;
+    border-radius:15px;
+    color:white;
+    font-size:24px;
+    font-weight:700;
+}
+
+.register-text{
+    text-align:center;
+    margin-top:25px;
+    color:white;
+}
+
+.register-text a{
+    color:#ef1c25;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.close-btn{
+    position:absolute;
+    right:25px;
+    top:25px;
+}
+
+ 
+.breadcrumb{
+    margin:20px 40px;
+    font-size:22px;
+    font-weight:600;
+}
+
+.breadcrumb a{
+    color:white;
+    text-decoration:none;
+}
+
+.breadcrumb span{
+    color:white;
+    margin:0 10px;
+}
+
+.breadcrumb .active{
+    color:#ff5e57;
+}
+
+.breadcrumb a:hover{
+  color: #ff5e57;
+  text-shadow: 0 0 10px rgba(225,95,87.0.8);
+  transform:translateY(-2px);
+}
+  
+
+  .action-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.trailer-btn{
+    background:#1f2937;
+    color:white;
+    border:2px solid #ff5e57;
+    padding:15px 25px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.trailer-btn:hover{
+    background:#ff5e57;
+    transform:translateY(-3px);
+     box-shadow: 0 4px 15px rgba(255,94,87,0.4);
+
+}
+
+.theatre-btn{
+    background:#8a3a36;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(255,94,87,0.4);
+}
+
+.theatre-btn:hover{
+    transform:translateY(-3px);
+      box-shadow: 0 4px 15px rgba(255,94,87,0.4);
+
+}
+
+.cast-right{
+    position:absolute;
+    top:140px;
+    right:30px;   /* move left/right */
+    width:180px;
+}
+
+.cast-right h4{
+    color:#ff5e57;
+    margin-bottom:25px;
+    font-size:30px;
+    margin-top: 40px;
+}
+
+.cast-person{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+    margin-top: 5px;
+}
+
+.cast-person img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff5e57;
+    margin-top: 5px;
+}
+
+.cast-person span{
+    color:white;
+    font-size:20px;
+    font-weight: 100px;
+    margin-top: 5px;
+}
+
+
+
+
+.close-btn{
+    position:absolute;
+    top:-15px;
+    right:-15px;
+    width:40px;
+    height:40px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    text-align:center;
+    line-height:40px;
+    font-size:28px;
+    cursor:pointer;
+    z-index:10000;
+}
+.notify-btn{
+    background: linear-gradient(135deg,#ff4d4d,#d60000);
+    color:white;
+    border:none;
+    padding:12px 28px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 4px 15px rgba(255,0,0,0.4);
+}
+
+.notify-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(255,0,0,0.6);
+}
+
+</style>
+</head>
+ <body>
+   <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid px-5">
+            
+            <a class="navbar-brand" href="movie.html"> MOVIE<span>X</span> </a>
+
+        
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <div
+              class="collapse navbar-collapse justify-content-center"
+              id="navbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link " href="index.html"> HOME </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="movie.html"> MOVIES </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> THEATRES </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> OFFERS </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#"> CONTACT </a>
+                </li>
+              </ul>
+            </div>
+
+            
+            <div class="icon-box">
+            
+                <i class="fa-solid fa-magnifying-glass"></i>
+            
+
+            <div class="cart-box">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+              
+             
+            </div>
+          </div>
+        </nav>
+       <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>></span>
+    <a href="movie.html">Movies</a>
+    <span>></span>
+    <span class="active">Thriller</span>
+</div>
+
+
+<section class="hero-section">
+
+    <img src="img/trailer.jpeg" class="hero-poster">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <p class="featured-text">FEATURED MOVIE</p>
+
+        <h1>THRILLER MOVIES</h1>
+
+        <p>
+            Edge-of-your-seat thrillers that keep
+            you guessing till the end.
+        </p>
+
+        <button class="watch-btn" onclick="openTrailer()">
+            <i class="fa-solid fa-play"></i>
+            Watch Trailer
+        </button>
+         <button class="premium-book-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#dcModal">
+                    Book Now</button>
+
+    </div>
+
+</section>
+
+
+<div id="trailerModal" class="trailer-modal">
+
+    <div class="trailer-box">
+
+        <span class="close-btn" onclick="closeTrailer()">
+            &times;
+        </span>
+
+        <video controls id="trailerVideo">
+            <source src="video/DC officail trailer.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+  function openTrailer(){
+    document.getElementById("trailerModal").style.display = "block";
+}
+
+function closeTrailer(){
+
+    let video =
+    document.getElementById("trailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("trailerModal")
+    .style.display = "none";
+}
+</script>
+ 
+<section class="container py-5">
+<h2 class="text-white fw-bold mb-4">
+        NOW SHOWING
+    </h2>
+   
+    <div class="row g-4">
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thirr 1.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Asuran</h5>
+                    
+
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.8</span>
+                    </div>
+
+                   <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#asuranModal">
+                    Book Now</button>
+                </div>
+            </div>
+        </div>
+ 
+  <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 2.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Retro</h5>
+                    
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.3</span>
+                    </div>
+                   <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#retroModal">
+                    Book Now</button> 
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 3 -->
+       <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 3.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Madharasi</h5>
+                  
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.4</span>
+                    </div>
+
+                      <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#skModal">
+                    Book Now</button> 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thirr 4.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Leo</h5>
+                  
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.4</span>
+                    </div>
+
+                      <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#leoModal">
+                    Book Now</button> 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 5.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Kaithi</h5>
+                   
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.5</span>
+                    </div>
+  <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kaithiModal">
+                    Book Now</button> 
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 6 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 6.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Vidamuyarchi</h5>
+                  
+
+                    <div class="d-flex justify-content-between">
+                        <span>⭐ 4.2</span>
+                    </div>
+
+                    <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#vidamuyarchiModal">
+                    Book Now</button> 
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container py-5">
+
+    
+
+    <div class="row g-4">
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 7.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Raayan</h5>
+                      <span>⭐ 4.4</span>
+                  <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#rayanModal">
+                    Book Now</button>
+                 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 8.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Viduthalai</h5>
+                      <span>⭐ 4.5</span>
+                   <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#viduthalaiModal">
+                    Book Now</button>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 3 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 9.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Mahaan</h5>
+                      <span>⭐ 4.4</span>
+                    <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#mahaanModal">
+                    Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 10.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Imaikanodigal</h5>
+                      <span>⭐ 4.4</span>
+                   <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#imaikanodigalModal">
+                    Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 5 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 11.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Ratchasan</h5>
+                      <span>⭐ 4.8</span>
+                   <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ratchasanModal">
+                    Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 6 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/thir 12.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Vikram</h5>
+                      <span>⭐ 4.4</span>
+                 <button class="btn btn-danger btn-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#vikramModal">
+                    Book Now</button>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!------------upcoming------>
+<section class="container py-5">
+
+    <h2 class="text-white fw-bold mb-4">
+        COMING SOON
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 1.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Sardhar</h5>
+                    <p>Releasing on</p>
+                    <p>Jun 20,2027</p>
+
+                 
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 2.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>KH vs RK</h5>
+                    <p>Releasing on</p>
+                    <p>jul 05, 2026</p>
+
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 3 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 3.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Pakkayie</h5>
+                    <p>Releasing on</p>
+                    <p>Jul 18, 2027</p>
+                    
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 4.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>DC</h5>
+                    <p>Releasing on</p>
+                    <p>Aug 6,2026</p>
+                  
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 5 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 5.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Nayagan</h5>
+                    <p>Releasing on</p>
+                    <p>Aug 20, 2026</p>
+
+                    
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 6 -->
+        <div class="col-lg-2 col-md-4 col-6">
+            <div class="movie-card">
+                <img src="img/upcoming 6.jpeg" class="movie-img">
+
+                <div class="movie-content">
+                    <h5>Kara</h5>
+                    <p>Releasing on</p>
+                    <p>Dec 9,2027</p>
+                    
+                     <button class="notify-btn" onclick="notifyMovie(this)">
+    🔔 Notify 
+</button>
+
+<script>
+function notifyMovie() {
+    alert("🎬 MovieX\n\nYou will be notified when ticket booking opens!");
+}
+</script>
+
+<script>
+
+function notifyMovie(btn) {
+
+    btn.innerHTML = "✔ Notified";
+    btn.style.background = "#28a745";
+    btn.disabled = true;
+
+    alert("You will be notified when ticket booking opens!");
+
+}
+</script>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!----------modal 1--------->
+<div class="modal fade" id="asuranModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/asuran 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Asuran</h1>
+
+            <div class="rating-box">
+              ⭐ 4.9 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>20 October 2025</p>
+              </div>
+            </div>
+
+            <hr>  <div class="cast-right">
+   
+            <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/dhanush.jpeg" alt="">
+        <span>Dhanush</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/manju.jpeg" alt="">
+        <span>Manjuwarrior</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/ken.jpeg" alt="">
+        <span>Ken</span>
+    </div>
+</div>
+             
+
+            
+           
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openAsuranTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Asuran Trailer Modal -->
+
+<div id="asuranTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeAsuranTrailer()">
+            &times;
+        </span>
+
+        <video controls id="asuranTrailerVideo" width="100%">
+
+            <source src="video/asuran.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openAsuranTrailer() {
+
+    document.getElementById("asuranTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeAsuranTrailer() {
+
+    let video =
+    document.getElementById("asuranTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("asuranTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>          
+
+  <!----------modal 2--------->
+<div class="modal fade" id="retroModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/retro 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Retro</h1>
+
+            <div class="rating-box">
+              ⭐ 4.9 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>29 October 2025</p>
+              </div>
+            </div>
+
+            <hr>
+
+              <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/suriya.jpeg" alt="">
+        <span>Suriya</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/pooja.jpeg" alt="">
+        <span>Pooja Hegde</span>
+    </div>
+</div>
+
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openRetroTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Retro Trailer Modal -->
+
+<div id="retroTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeRetroTrailer()">
+            &times;
+        </span>
+
+        <video controls id="retroTrailerVideo" width="100%">
+
+            <source src="video/retro.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openRetroTrailer() {
+
+    document.getElementById("retroTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeRetroTrailer() {
+
+    let video =
+    document.getElementById("retroTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("retroTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+         
+
+
+
+           
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+   <!----------modal 3--------->
+<div class="modal fade" id="skModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/matharaasi 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Matharasi</h1>
+
+            <div class="rating-box">
+              ⭐ 4.9 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>29 October 2025</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/sk.jpeg" alt="">
+        <span>SK</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/madharasi castjpeg.jpeg" alt="">
+        <span>Rukmini</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/madharai cast 2.jpeg" alt="">
+        <span>Vidyut Jammwal</span>
+    </div>
+
+   
+</div>
+
+           <div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openMadharasiTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Retro Trailer Modal -->
+
+<div id="MadharasiTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeMadharasiTrailer()">
+            &times;
+        </span>
+
+        <video controls id="MadharasiTrailerVideo" width="100%">
+
+            <source src="video/madharasi.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openMadharasiTrailer() {
+
+    document.getElementById("MadharasiTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeMadharasiTrailer() {
+
+    let video =
+    document.getElementById("MadharasiTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("MadharasiTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+   <!----------modal 4--------->
+<div class="modal fade" id="leoModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/leo.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Leo</h1>
+
+            <div class="rating-box">
+              ⭐ 4.9 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>30 October 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/vijay.jpeg" alt="">
+        <span>Vijay</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/trisha.jpeg" alt="">
+        <span>Trisha</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/arjun.jpeg" alt="">
+        <span>Arjun</span>
+    </div>
+
+   
+</div>
+
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openLeoTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Leo Trailer Modal -->
+
+<div id="leoTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeLeoTrailer()">
+            &times;
+        </span>
+
+        <video controls id="leoTrailerVideo" width="100%">
+
+            <source src="video/leo.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openLeoTrailer() {
+
+    document.getElementById("leoTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeLeoTrailer() {
+
+    let video =
+    document.getElementById("leoTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("leoTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+ <!----------modal 5--------->
+<div class="modal fade" id="kaithiModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/kaithi 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Kaithi</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>01 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/karthick.jpeg" alt="">
+        <span>Karthick</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/arjun dass.jpeg" alt="">
+        <span>Arjun dass</span>
+    </div>
+
+    
+</div>
+
+         <div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openKaithiTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Kaithi Trailer Modal -->
+
+<div id="kaithiTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeKaithiTrailer()">
+            &times;
+        </span>
+
+        <video controls id="kaithiTrailerVideo" width="100%">
+
+            <source src="video/kaithi.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openKaithiTrailer() {
+
+    document.getElementById("kaithiTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeKaithiTrailer() {
+
+    let video =
+    document.getElementById("kaithiTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("kaithiTrailerModal")
+            .style.display = "none";
+}
+
+</script>   
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+ 
+ <!----------modal 6--------->
+<div class="modal fade" id="vidamuyarchiModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/vidamuyarchi 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Vidamuyarchi</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>09 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/ajith.jpeg" alt="">
+        <span>Ajith</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/arjun.jpeg" alt="">
+        <span>Arjun</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/trisha.jpeg" alt="">
+        <span>Trisha</span>
+    </div>
+
+   
+</div>
+
+          <div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openVidamuyarchiTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Vidamuyarchi Trailer Modal -->
+
+<div id="vidamuyarchiTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeVidamuyarchiTrailer()">
+            &times;
+        </span>
+
+        <video controls id="vidamuyarchiTrailerVideo" width="100%">
+
+            <source src="video/vidamuyarchi.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openVidamuyarchiTrailer() {
+
+    document.getElementById("vidamuyarchiTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeVidamuyarchiTrailer() {
+
+    let video =
+    document.getElementById("vidamuyarchiTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("vidamuyarchiTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+</script>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+<!----------modal 7--------->
+<div class="modal fade" id="rayanModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/rayaan 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Raayan</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>06 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+            <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/dhanush.jpeg" alt="">
+        <span>Dhanush</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/rayan heroin.jpeg" alt="">
+        <span>Dhushara</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/rayan side.jpeg" alt="">
+        <span>Sundeep</span>
+    </div>
+</div>
+           <div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openRaayanTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Raayan Trailer Modal -->
+
+<div id="raayanTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeRaayanTrailer()">
+            &times;
+        </span>
+
+        <video controls id="raayanTrailerVideo" width="100%">
+
+            <source src="video/rayan.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openRaayanTrailer() {
+
+    document.getElementById("raayanTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeRaayanTrailer() {
+
+    let video =
+    document.getElementById("raayanTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("raayanTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <!----------modal 8--------->
+<div class="modal fade" id="viduthalaiModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/viduthalai 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Viduthalai</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>12 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/soori.jpeg" alt="">
+        <span>Soori</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/serthu.jpeg" alt="">
+        <span>Sethupathi</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/viduthalai cast.jpeg" alt="">
+        <span>Bhavanasri</span>
+    </div>
+
+   
+</div>
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openViduthalaiTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Viduthalai Trailer Modal -->
+
+<div id="viduthalaiTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeViduthalaiTrailer()">
+            &times;
+        </span>
+
+        <video controls id="viduthalaiTrailerVideo" width="100%">
+
+            <source src="video/viduthalai.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openViduthalaiTrailer() {
+
+    document.getElementById("viduthalaiTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeViduthalaiTrailer() {
+
+    let video =
+    document.getElementById("viduthalaiTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("viduthalaiTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <!----------modal 9--------->
+<div class="modal fade" id="mahaanModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/mahaan.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Mahaan</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>24 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/dad.jpeg" alt="">
+        <span>Vikram</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/vikram son.jpeg" alt="">
+        <span>Druv</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/anurag.jpeg" alt="">
+        <span>Anurag</span>
+    </div>
+
+   
+</div>
+
+             <div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openMahaanTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Mahaan Trailer Modal -->
+
+<div id="mahaanTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeMahaanTrailer()">
+            &times;
+        </span>
+
+        <video controls id="mahaanTrailerVideo" width="100%">
+
+            <source src="video/mahaan.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openMahaanTrailer() {
+
+    document.getElementById("mahaanTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeMahaanTrailer() {
+
+    let video =
+    document.getElementById("mahaanTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("mahaanTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  
+
+  <!----------modal 10--------->
+<div class="modal fade" id="imaikanodigalModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/imaika nodigal 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Imaika Nodigal</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>17 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/nine.jpeg" alt="">
+        <span>Ninethara</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/atharva.jpeg" alt="">
+        <span>Atharva</span>
+    </div>
+
+     
+   
+</div>
+
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openImaikkaaNodigalTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Imaikkaa Nodigal Trailer Modal -->
+
+<div id="imaikkaaNodigalTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeImaikkaaNodigalTrailer()">
+            &times;
+        </span>
+
+        <video controls id="imaikkaaNodigalTrailerVideo" width="100%">
+
+            <source src="video/nine.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openImaikkaaNodigalTrailer() {
+
+    document.getElementById("imaikkaaNodigalTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeImaikkaaNodigalTrailer() {
+
+    let video =
+    document.getElementById("imaikkaaNodigalTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("imaikkaaNodigalTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <!----------moda 11--------->
+<div class="modal fade" id="ratchasanModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/ratchsan 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Ratchasan</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>01 november 2026</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/vishnu vishal.jpeg" alt="">
+        <span>Vishnuvishal</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/amala pal.jpeg" alt="">
+        <span>Amala pal</span>
+    </div>
+
+    
+</div>
+
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openRatchasanTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Ratchasan Trailer Modal -->
+
+<div id="ratchasanTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeRatchasanTrailer()">
+            &times;
+        </span>
+
+        <video controls id="ratchasanTrailerVideo" width="100%">
+
+            <source src="video/ratchasan.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openRatchasanTrailer() {
+
+    document.getElementById("ratchasanTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeRatchasanTrailer() {
+
+    let video =
+    document.getElementById("ratchasanTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("ratchasanTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <!----------modal 12--------->
+<div class="modal fade" id="vikramModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/vikram 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+
+            <h1 class="movie-title">Vikram</h1>
+
+            <div class="rating-box">
+              ⭐ 4.5 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>08 november 2025</p>
+              </div>
+            </div>
+
+            <hr>
+             <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/kamal.jpeg" alt="">
+        <span>Kamal</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/fahath.jpeg" alt="">
+        <span>Fahath</span>
+    </div>
+
+     <div class="cast-person">
+        <img src="img/sethupathy.jpeg"">
+        <span>Sethupathy</span>
+    </div>
+
+   
+</div>
+<div class="action-buttons">
+
+    <button class="trailer-btn"
+            onclick="openVikramTrailer()">
+        ▶ Watch Trailer
+    </button>
+
+    <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+
+</div>
+
+<!-- Vikram Trailer Modal -->
+
+<div id="vikramTrailerModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-btn"
+              onclick="closeVikramTrailer()">
+            &times;
+        </span>
+
+        <video controls id="vikramTrailerVideo" width="100%">
+
+            <source src="video/vikram.mp4"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+function openVikramTrailer() {
+
+    document.getElementById("vikramTrailerModal")
+            .style.display = "block";
+
+}
+
+function closeVikramTrailer() {
+
+    let video =
+    document.getElementById("vikramTrailerVideo");
+
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById("vikramTrailerModal")
+            .style.display = "none";
+}
+
+</script>
+
+         </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+  <div class="modal fade" id="dcModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+
+    <div class="modal-content movie-modal">
+
+      <div class="modal-body p-4">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+            <img src="img/dc 2.jpeg"
+                 class="img-fluid movie-poster">
+          </div>
+
+          <div class="col-lg-7">
+           <div class="cast-right">
+    <h4>Cast</h4>
+
+    <div class="cast-person">
+        <img src="img/logesh.jpeg" alt="">
+        <span>Lokesh</span>
+    </div>
+
+    <div class="cast-person">
+        <img src="img/logesh heroin.jpeg" alt="">
+        <span>wamiqa</span>
+    </div>
+
+   
+</div>
+            <h1 class="movie-title">DC</h1>
+
+            <div class="rating-box">
+              ⭐ 4.9 / 5
+              <span class="review">(1.0K Reviews)</span>
+            </div>
+
+            <hr>
+
+            <div class="info-row">
+              <i class="fa-solid fa-film"></i>
+              <div>
+                <h5>Genre</h5>
+                <p>Action,Thirller</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-solid fa-language"></i>
+              <div>
+                <h5>Language</h5>
+                <p>Tamil</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-clock"></i>
+              <div>
+                <h5>Duration</h5>
+                <p>2h 49m</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <i class="fa-regular fa-calendar"></i>
+              <div>
+                <h5>Release Date</h5>
+                <p>9 december 2026</p>
+              </div>
+            </div>
+
+            <hr>
+
+           <button class="theatre-btn">
+        🎟 Select Theatre
+    </button>
+           
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+ <footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+
+            <h2>MOVIE <span>X</span></h2>
+
+            <p>
+                Book tickets for the latest movies at ur favourite theatres
+            </p>
+
+            
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Theaters</a>
+            <a href="#">Offers</a>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact Us</h3>
+
+            <p>9597478053</p>
+
+            <p>harinihaarini5456@gmail.com</p>
+
+            <p>Coimbatore</p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Support</h3>
+
+             <p>Help Center</p>
+
+            <p>Terms & Conditions</p>
+
+            <p>Privacy Policy</p>
+
+        </div>
+    
+
+            <h4 class="text center">
+              © 2026 Movie <span>X</span>, All rights reserved
+            </h4>
+          </footer>
+
+          
+<div class="modal fade" id="loginModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content login-box">
+
+      <button type="button"
+      class="btn-close btn-close-white close-btn"
+      data-bs-dismiss="modal"></button>
+
+      <h2 class="login-title">
+        WELCOME BACK
+      </h2>
+
+      <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input type="email"
+        placeholder="Email Address">
+      </div>
+
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+
+        <input
+        type="password"
+        id="password"
+        placeholder="Password">
+
+        <i class="fa-solid fa-eye eye-icon"
+        onclick="togglePassword()"></i>
+      </div>
+
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button class="login-btn">
+        LOGIN NOW
+      </button>
+
+      <p class="register-text">
+        Don't have an account?
+        <a href="register.html">REGISTER</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+<script>
+function togglePassword(){
+
+const password =
+document.getElementById("password");
+
+if(password.type==="password"){
+password.type="text";
+}
+else{
+password.type="password";
+}
+
+}
+</script>
+</body>
+</html>
+        
+
+       
